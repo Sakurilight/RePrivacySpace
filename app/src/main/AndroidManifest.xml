@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.geektang.privacyspace">
+    package="com.reprivacyspace.app">
 
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- Signature-level permission used by the system_server side to authenticate the
+         control channel caller. Only builds signed with the same key can hold it. -->
+    <permission
+        android:name="com.reprivacyspace.app.permission.CONTROL"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.reprivacyspace.app.permission.CONTROL" />
 
     <application
         android:name=".App"
@@ -18,13 +26,26 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
+            android:theme="@style/Theme.PrivacySpace" />
+
+        <!-- Launcher entry lives on an alias so that the icon can be hidden at runtime
+             (PackageManager#setComponentEnabledSetting) while MainActivity stays reachable
+             through an explicit component: quick launch, LSPosed, or adb. -->
+        <activity-alias
+            android:name=".LauncherAlias"
+            android:targetActivity=".ui.main.MainActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
             android:theme="@style/Theme.PrivacySpace">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity-alias>
 
         <meta-data
             android:name="xposedmodule"

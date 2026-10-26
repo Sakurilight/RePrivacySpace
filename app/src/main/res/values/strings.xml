@@ -57,4 +57,14 @@
     <string name="about_page_telegram_description">Privacy Space Alpha</string>
     <string name="about_page_coolapk_description">Latest stable version</string>
     <string name="restart_settings_app">Restart Settings App</string>
+    <string name="settings_restart_successfully">Settings restarted</string>
+    <string name="settings_restart_failed">Failed to restart Settings</string>
+    <string name="other_settings">Other Settings</string>
+    <string name="quick_launch">Quick Launch</string>
+    <string name="quick_launch_explanation">While the screen is on, quickly press Volume Up, Volume Down and Power in sequence to open PrivacySpace (experimental).</string>
+    <string name="verbose_logs">Verbose Logs</string>
+    <string name="verbose_logs_explanation">Turning this off reduces PrivacySpace\'s log output in LSPosed, which slightly improves performance and battery life.</string>
+    <string name="hide_launcher_icon">Hide Launcher Icon</string>
+    <string name="hide_launcher_icon_explanation">When enabled, the icon disappears from the launcher and the app drawer. Open PrivacySpace through LSPosed or the Volume Up / Volume Down / Power quick launch.</string>
+    <string name="hide_launcher_icon_quick_launch_enabled">Quick Launch was enabled so PrivacySpace stays reachable without an icon.</string>
 </resources>

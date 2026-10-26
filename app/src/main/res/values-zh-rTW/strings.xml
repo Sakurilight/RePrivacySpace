@@ -1,5 +1,5 @@
-﻿<resources>
-    <string name="app_name">隱秘空間</string>
+<resources>
+    <string name="app_name">隱私空間</string>
     <string name="menu">選單</string>
     <string name="set_white_list">設定白名單</string>
     <string name="display_system_apps">顯示系統App</string>
@@ -54,7 +54,18 @@
     <string name="about">關於</string>
     <string name="about_page_app_intro">本應用是一個全局隱藏應用列表的Xposed模組</string>
     <string name="coolapk">酷安</string>
-    <string name="about_page_telegram_description">隱秘空間Alpha版本</string>
+    <string name="about_page_telegram_description">隱私空間Alpha版本</string>
     <string name="about_page_coolapk_description">最新穩定版本</string>
-    <string name="restart_settings_app">重啟Settings</string>
+    <string name="restart_settings_app">重啟設定</string>
+    <string name="other_settings">其他設定</string>
+    <string name="quick_launch">快速啟動</string>
+    <string name="quick_launch_explanation">亮屏狀態下按順序快速按下音量+、音量-和電源鍵來啟動隱私空間（實驗性功能）</string>
+    <string name="verbose_logs">詳細日誌</string>
+    <string name="verbose_logs_explanation">關閉此功能可以減少 LSPosed 中隱私空間的日誌量，略微提升效能與續航</string>
+    <string name="settings_restart_successfully">設定重啟成功</string>
+    <string name="settings_restart_failed">設定重啟失敗</string>
+    <string name="restart_security_explanation">部分日誌的開關可能需重啟手機管家APP生效，是否重啟？</string>
+    <string name="hide_launcher_icon">隱藏桌面圖示</string>
+    <string name="hide_launcher_icon_explanation">開啟後桌面與應用抽屜不再顯示圖示，只能透過 LSPosed 或快速啟動開啟隱私空間</string>
+    <string name="hide_launcher_icon_quick_launch_enabled">已同時開啟快速啟動，避免隱藏圖示後無法進入</string>
 </resources>

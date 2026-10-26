@@ -1,57 +1,35 @@
-# Privacy Space
+# RePrivacySpace
 
-[![Stars](https://img.shields.io/github/stars/GeekTR/PrivacySpace?label=Stars)](https://github.com/GeekTR/PrivacySpace)
-[![Release](https://img.shields.io/github/v/release/Xposed-Modules-Repo/cn.geektang.privacyspace?label=Release)](https://github.com/Xposed-Modules-Repo/cn.geektang.privacyspace/releases/latest)
-[![Download](https://img.shields.io/github/downloads/Xposed-Modules-Repo/cn.geektang.privacyspace/total)](https://github.com/Xposed-Modules-Repo/cn.geektang.privacyspace/releases/latest)
-[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/PrivacySpaceAlpha)
-[![GitHub license](https://img.shields.io/github/license/Xposed-Modules-Repo/cn.geektang.privacyspace)](https://github.com/Xposed-Modules-Repo/cn.geektang.privacyspace/blob/main/LICENSE)
+**PrivacySpace 的维护分支**：在 Android 15 / 16 / 17 上恢复可用，并与 HMA-OSS 共存。
+包名 **`com.reprivacyspace.app`**，当前版本 **0.1.0 (versionCode 1000)**。
 
-[中文文档](https://github.com/Xposed-Modules-Repo/cn.geektang.privacyspace/blob/main/README_CN.md)
+- 维护者：**Sakurilight** — <https://github.com/Sakurilight>
+- 源码：<https://github.com/Sakurilight/RePrivacySpace>
+- 上游：**PrivacySpace by GeekTR** — <https://github.com/GeekTR/PrivacySpace>
+- 协议：**MIT**（本项目基于 MIT 协议二次开发）
 
-This is an **Xposed** module. The function of this module is to "hide" the apps, which can achieve the "Second space" function of MIUI.
+> 本分支不是官方版本，请自行判断风险。
 
-## What cool things can it do?
+## 功能
 
-1. In addition to detecting Root, some banking apps will also detect Xposed modules. This module can hide our Xposed modules and pass the detection of banking apps;
+- 全局隐藏应用列表（系统级可见性过滤，普通 App 看不到被隐藏的应用）；
+- 白名单 / 致盲（黑名单）/ 关联应用 / 多用户配置；
+- **快速启动**：亮屏时依次按 音量+、音量-、电源 打开本应用；
+- **隐藏桌面图标**：隐藏后只能通过快捷启动、LSPosed 或 adb 打开；
+- **详细日志**开关；
+- 重启桌面 / 重启设置 / 重启手机管家 / 重启系统。
 
-2. A certain version of an app is particularly useful, and we don't want it to be automatically updated by the app store;
+## 兼容性
 
-3. When we are watching an advertisement, some apps detect the existence of another app and will open it directly, but we do not want to open that app;
+| 项目 | 说明 |
+| --- | --- |
+| Android | 8.0–17（API 26–37） |
+| Xposed | LSPosed（作用域需包含「系统框架」） |
+| HMA-OSS | 可同时启用，互不覆盖 hook |
+| 签名 | 独立签名，不能覆盖安装官方版本 |
 
-4. Why should we tell software vendors something as personal as which apps are installed?
+技术细节见 [CHANGELOG.md](CHANGELOG.md)。
 
-5. More cool things are waiting for you to discover...
+## License
 
-## Notice
-
-1. If random package names are enabled in your Magisk app, whitelist it. Otherwise, the apps moved to the "Privacy Space" cannot obtain the Root permission correctly.
-
-2. Apps that move to the "Privacy Space" can be launched by clicking the APP icon on the "Privacy Space" home page.
-
-3. If you don't want to hide an app (such as the desktop app), you can add it to the whitelist.
-
-4. If you use this module to hide some system apps, the system may fail to boot after the restart. Therefore, exercise caution when hiding system apps.
-
-5. If this module causes your system to fail to boot, you can restart the system again after connecting to the computer and executing "adb uninstall cn.geektang.privacyspace" on the system load page (with USB debugging enabled).
-
-## Todo
-
-They will coming soon in future.
-
-- [x] Add the search function on the app list page.
-
-- [x] Adapt to Android version 8-10.
-
-- [x] Fixed the bug that some mobile phones crashed directly without root permission.
-
-- [x] Remove the dependency on root permissions.
-
-- [ ] Install Xposed module to automatically hide (user optional).
-
-- [ ] When the Xposed module is hidden, the user can choose whether to add its recommended app as its "Connected App".
-
-## Scope
-
-1. System Framework (**required**)
-
-2. Targeted hooks can be made when the non-Android system scope is checked (used when the hidden function cannot take effect after System Framework is checked)
+MIT。原始版权归 GeekTR 所有；本分支的修改同样以 MIT 协议发布。

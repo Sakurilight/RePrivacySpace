@@ -7,13 +7,30 @@ plugins {
 
 android {
     compileSdk 32
+    buildToolsVersion "34.0.0"
+
+    // versionName is the single source of truth; versionCode = MAJOR*100000 + MINOR*1000 + PATCH.
+    def appVersionName = "0.1.0"
+    def versionParts = appVersionName.tokenize('.')
+    if (versionParts.size() != 3) {
+        throw new GradleException("versionName must be MAJOR.MINOR.PATCH, got: $appVersionName")
+    }
+    def vMajor = versionParts[0] as int
+    def vMinor = versionParts[1] as int
+    def vPatch = versionParts[2] as int
+    [vMajor, vMinor, vPatch].each { v ->
+        if (v < 0 || v > 99) {
+            throw new GradleException("each version segment must be 0-99, got: $appVersionName")
+        }
+    }
+    def appVersionCode = vMajor * 100000 + vMinor * 1000 + vPatch
 
     defaultConfig {
-        applicationId "cn.geektang.privacyspace"
+        applicationId "com.reprivacyspace.app"
         minSdk 26
         targetSdk 32
-        versionCode 21
-        versionName "1.3.7"
+        versionCode appVersionCode
+        versionName appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -23,20 +40,37 @@ android {
 
     signingConfigs {
         release {
-            keyAlias System.env.Space_keyAlias
-            keyPassword System.env.Space_keyPassword
-            storeFile file(System.env.Space_storeFile)
-            storePassword System.env.Space_storePassword
+            // The signing key is deliberately kept outside the repository.  Provide
+            // keystore/signing.properties (storeFile, storePassword, keyAlias, keyPassword)
+            // or the Space_* environment variables; nothing is committed.
+            def signingPropsFile = rootProject.file("keystore/signing.properties")
+            if (signingPropsFile.exists()) {
+                def props = new Properties()
+                signingPropsFile.withInputStream { props.load(it) }
+                storeFile rootProject.file("keystore/" + props["storeFile"])
+                storePassword props["storePassword"]
+                keyAlias props["keyAlias"]
+                keyPassword props["keyPassword"]
+            } else if (System.env.Space_storeFile) {
+                storeFile file(System.env.Space_storeFile)
+                storePassword System.env.Space_storePassword
+                keyAlias System.env.Space_keyAlias
+                keyPassword System.env.Space_keyPassword
+            } else {
+                throw new GradleException(
+                        "Missing signing configuration: keystore/signing.properties not found " +
+                                "and Space_storeFile is not set.")
+            }
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
     buildTypes {
         debug {
-            buildConfigField('String', 'APP_CENTER_SECRET', "\"${System.env.Space_AppCenterSecret}\"")
             signingConfig signingConfigs.release
         }
         release {
-            buildConfigField('String', 'APP_CENTER_SECRET', "\"${System.env.Space_AppCenterSecret}\"")
             minifyEnabled false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -64,6 +98,10 @@ android {
             excludes += '**.properties'
         }
     }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
@@ -89,8 +127,5 @@ dependencies {
     implementation "com.google.accompanist:accompanist-flowlayout:0.23.1"
     implementation 'com.squareup.moshi:moshi:1.13.0'
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
-    def appCenterSdkVersion = '4.4.2'
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     compileOnly 'androidx.recyclerview:recyclerview:1.2.1'
 }

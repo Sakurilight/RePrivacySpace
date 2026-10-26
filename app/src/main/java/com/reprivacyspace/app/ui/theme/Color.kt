@@ -1,0 +1,40 @@
+package com.reprivacyspace.app.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+// Material 3 style palette with Bilibili pink (#FB7299) as the primary colour.
+val MdPrimary = Color(0xFFFB7299)
+val MdOnPrimary = Color(0xFFFFFFFF)
+val MdPrimaryContainer = Color(0xFFFFD9E2)
+val MdOnPrimaryContainer = Color(0xFF3F0018)
+val MdSecondary = Color(0xFF74565F)
+val MdOnSecondary = Color(0xFFFFFFFF)
+val MdSecondaryContainer = Color(0xFFF2DDE2)
+val MdOnSecondaryContainer = Color(0xFF2B151B)
+val MdTertiary = Color(0xFF7D5260)
+val MdBackground = Color(0xFFFFF8F8)
+val MdSurface = Color(0xFFFFF8F8)
+val MdSurfaceVariant = Color(0xFFF2DDE2)
+val MdOnSurface = Color(0xFF1F1A1C)
+val MdOnSurfaceVariant = Color(0xFF4F4448)
+val MdOutline = Color(0xFF817478)
+val MdError = Color(0xFFB3261E)
+val MdOnError = Color(0xFFFFFFFF)
+
+// Dark theme.
+val MdPrimaryDark = Color(0xFFFFB1C6)
+val MdOnPrimaryDark = Color(0xFF5E1133)
+val MdPrimaryContainerDark = Color(0xFF7D2948)
+val MdOnPrimaryContainerDark = Color(0xFFFFD9E2)
+val MdSecondaryDark = Color(0xFFE3BDC6)
+val MdOnSecondaryDark = Color(0xFF422931)
+val MdSecondaryContainerDark = Color(0xFF5A3F47)
+val MdTertiaryDark = Color(0xFFEFB8C8)
+val MdBackgroundDark = Color(0xFF1F1A1C)
+val MdSurfaceDark = Color(0xFF1F1A1C)
+val MdSurfaceVariantDark = Color(0xFF4F4448)
+val MdOnSurfaceDark = Color(0xFFEBE0E2)
+val MdOnSurfaceVariantDark = Color(0xFFD6C2C7)
+val MdOutlineDark = Color(0xFF9F8C91)
+val MdErrorDark = Color(0xFFF2B8B5)
+val MdOnErrorDark = Color(0xFF601410)

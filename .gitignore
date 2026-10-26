@@ -10,3 +10,6 @@
 local.properties
 *.jks
 google-services.json
+keystore/
+signing.properties
+*.keystore
